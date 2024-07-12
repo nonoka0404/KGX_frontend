@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-form {
+  display: flex;
+  align-items: flex-start;
+}
+
+#text {
+  width: 560px; /* 70 characters * 8px (approx width of a character at 16pt) */
+  font-size: 16pt;
+  resize: none;
+  overflow: hidden;
+}
+
+input[type="submit"] {
+  margin-left: 10px;
+}

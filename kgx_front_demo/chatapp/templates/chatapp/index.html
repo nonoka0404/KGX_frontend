@@ -2,26 +2,39 @@
 <html>
   <head>
     <title>Chat App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+    <script src="{% static 'index.js' %}"></script>
   </head>
   <body>
-    <form method="post">
-      {% csrf_token %}
-      <label for="text">Text:</label><br />
-      <input type="text" id="text" name="text" /><br />
-      <input type="submit" value="Submit" />
-    </form>
-    {% if text %}
-    <!--<p>You submitted: {{ text }}</p>
-    <p>Server processed: {{ result }}</p>-->
-    {% endif %}
-    <h2>History:</h2>
-    <ul>
-      {% for text, result in history %}
-      <li>
-        <p>Input: {{ text }}</p>
-        <p>Result: {{ result }}</p>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="container">
+      <div class="chat-form-container">
+        <form method="post" class="chat-form">
+          {% csrf_token %}
+          <textarea
+            id="text"
+            name="text"
+            placeholder="Ask me anything"
+            rows="1"
+          ></textarea>
+          <input type="submit" value="Submit" />
+        </form>
+        {% if text %}
+        <!--<p>You submitted: {{ text }}</p>
+        <p>Server processed: {{ result }}</p>-->
+        {% endif %}
+      </div>
+      <div class="history-container">
+        <h2>History:</h2>
+        <ul>
+          {% for text, result in history %}
+          <li>
+            <p>Input: {{ text }}</p>
+            <p>Result: {{ result }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
