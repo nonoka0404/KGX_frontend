@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat App</title>
+  </head>
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <label for="text">Text:</label><br />
+      <input type="text" id="text" name="text" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    {% if text %}
+    <!--<p>You submitted: {{ text }}</p>
+    <p>Server processed: {{ result }}</p>-->
+    {% endif %}
+    <h2>History:</h2>
+    <ul>
+      {% for text, result in history %}
+      <li>
+        <p>Input: {{ text }}</p>
+        <p>Result: {{ result }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
