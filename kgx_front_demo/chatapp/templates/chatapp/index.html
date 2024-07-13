@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,6 +9,19 @@
   </head>
   <body>
     <div class="container">
+      <div class="history-container">
+        <h2 style="position: sticky; top: 20pt">History:</h2>
+        <div style="overflow-y: auto; max-height: calc(100vh - 60pt)">
+          <ul>
+            {% for text, result in history %}
+            <li>
+              <p>Input: {{ text }}</p>
+              <p>Result: {{ result }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
       <div class="chat-form-container">
         <form method="post" class="chat-form">
           {% csrf_token %}
@@ -19,21 +33,50 @@
           ></textarea>
           <input type="submit" value="Submit" />
         </form>
-        {% if text %}
-        <!--<p>You submitted: {{ text }}</p>
-        <p>Server processed: {{ result }}</p>-->
-        {% endif %}
+        {% if text %} {% endif %}
       </div>
+    </div>
+  </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat App</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+    <script src="{% static 'index.js' %}"></script>
+  </head>
+  <body>
+    <div class="container">
       <div class="history-container">
-        <h2>History:</h2>
-        <ul>
-          {% for text, result in history %}
-          <li>
-            <p>Input: {{ text }}</p>
-            <p>Result: {{ result }}</p>
-          </li>
-          {% endfor %}
-        </ul>
+        <h2 style="position: sticky; top: 20pt">History:</h2>
+        <!-- Add inline style to fix the position of the History title -->
+        <div style="overflow-y: auto; max-height: calc(100vh - 60pt)">
+          <!-- Add a div to enable scrolling for the history content -->
+          <ul>
+            {% for text, result in history %}
+            <li>
+              <p>Input: {{ text }}</p>
+              <p>Result: {{ result }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="chat-form-container">
+        <form method="post" class="chat-form">
+          {% csrf_token %}
+          <textarea
+            id="text"
+            name="text"
+            placeholder="Ask me anything"
+            rows="1"
+          ></textarea>
+          <input type="submit" value="Submit" />
+        </form>
+        {% if text %} {% endif %}
       </div>
     </div>
   </body>

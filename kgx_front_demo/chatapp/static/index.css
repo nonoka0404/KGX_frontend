@@ -1,3 +1,4 @@
+/*To be dominated by me is not as bad for human pride as to be dominated by others of your species*/
 body {
   display: flex;
   justify-content: center;
@@ -11,17 +12,46 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Change from column-reverse to column */
   align-items: center;
+  width: 100%; /* Add this line to make the container full width */
+  position: fixed; /* Add this line to fix the position */
+  bottom: 0; /* Add this line to fix the position at the bottom */
+  height: 100vh; /* Add this line to make the container full height */
+  overflow: auto; /* Add this line to enable scrolling */
+}
+
+.history-container {
+  position: sticky; /* Change from relative to sticky */
+  top: 20pt; /* Change from 15pt to 20pt */
+  width: calc(
+    100% - 30pt
+  ); /* Add this line to make the history full width minus 30pt for padding */
+  padding: 0 15pt; /* Add this line to add padding on the left and right */
+  max-height: calc(
+    100vh - 30pt
+  ); /* Add this line to limit the height of the history container */
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+}
+
+.chat-form-container {
+  position: fixed; /* Change from relative to fixed */
+  bottom: 0; /* Add this line to fix the position at the bottom */
+  width: 100%; /* Add this line to make the form full width */
+  background: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  justify-content: center; /* Add this line to center the form horizontally */
 }
 
 .chat-form {
   display: flex;
   align-items: flex-start;
+  width: 560px; /* Change from 100% to 560px */
 }
 
 #text {
-  width: 560px; /* 70 characters * 8px (approx width of a character at 16pt) */
+  width: 1120px; /* 70 characters * 8px (approx width of a character at 16pt) */
   font-size: 16pt;
   resize: none;
   overflow: hidden;
