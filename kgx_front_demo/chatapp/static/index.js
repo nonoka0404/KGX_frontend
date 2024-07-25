@@ -9,6 +9,8 @@ function sendMessage() {
   const input = document.getElementById("chat-input");
   const message = input.value.trim();
   if (message) {
+    // ユーザーのメッセージを先に追加
+    addMessage("user", message);
     fetch("/chat/", {
       method: "POST",
       headers: {
@@ -22,8 +24,8 @@ function sendMessage() {
     })
       .then((response) => response.json())
       .then((data) => {
+        // ボットのレスポンスを追加
         addMessage("bot", data.response);
-        addMessage("user", message);
       });
     input.value = "";
   }
@@ -34,7 +36,7 @@ function addMessage(type, text) {
   const messageElement = document.createElement("div");
   messageElement.className = `message ${type}`;
   messageElement.textContent = text;
-  chatBox.appendChild(messageElement);
+  chatBox.appendChild(messageElement); // メッセージをチャットボックスの最後に追加
   chatHistories[currentChat].push({ type: type, text: text });
   chatBox.scrollTop = chatBox.scrollHeight;
 }
@@ -48,14 +50,14 @@ document
     }
   });
 
-function switchChat(chatId) {
-  currentChat = chatId;
-  const chatBox = document.getElementById("chat-box");
-  chatBox.innerHTML = "";
-  chatHistories[chatId].forEach((msg) => {
-    addMessage(msg.type, msg.text);
-  });
-}
+// function switchChat(chatId) {
+//   currentChat = chatId;
+//   const chatBox = document.getElementById("chat-box");
+//   chatBox.innerHTML = "";
+//   chatHistories[chatId].forEach((msg) => {
+//     addMessage(msg.type, msg.text);
+//   });
+// }
 
 function editHistoryTitle(element) {
   const newTitle = prompt(
@@ -128,13 +130,3 @@ document
     event.preventDefault();
     sendMessage();
   });
-
-function handleKeyDown(event) {
-  if (event.key === "Enter") {
-    if (!event.shiftKey) {
-      event.preventDefault();
-      // Submit the form
-      document.getElementById("chat-form").submit();
-    }
-  }
-}
