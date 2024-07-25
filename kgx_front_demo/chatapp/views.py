@@ -31,3 +31,4 @@ def do_something(text):
     # ここで何らかの処理を行い、結果を返します。
     result = "The process was completed without any issues."
     return result
+

@@ -3,7 +3,7 @@ let chatHistories = {
   2: [],
 };
 let currentChat = 1;
-let chatCounter = 2;
+let chatCounter = 3;
 
 function sendMessage() {
   const input = document.getElementById("chat-input");
@@ -95,6 +95,7 @@ function addNewChat() {
   chatHistories[newChatId] = [];
   const historyList = document.getElementById("history-list");
   const newHistoryItem = document.createElement("li");
+  // `履歴項目 ${newChatId}`を設定
   newHistoryItem.textContent = `履歴項目 ${newChatId}`;
   newHistoryItem.ondblclick = function () {
     editHistoryTitle(newHistoryItem);

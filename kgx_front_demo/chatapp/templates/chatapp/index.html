@@ -21,7 +21,7 @@
               ondblclick="editHistoryTitle(this)"
               onclick="switchChat({{ chat_id }})"
             >
-              {{ chat.title }}
+              履歴項目{{ forloop.counter }} <!-- chat_idの代わりにループカウンターを使用 -->
             </li>
             {% endfor %}
           </ul>
