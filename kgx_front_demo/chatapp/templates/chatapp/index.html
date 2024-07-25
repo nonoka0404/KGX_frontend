@@ -14,16 +14,18 @@
           <input type="text" id="search-input" placeholder="検索" />
           <button onclick="clearSearchInput()">×</button>
         </div>
-        <ul id="history-list">
-          {% for chat_id, chat in chats.items %}
-          <li
-            ondblclick="editHistoryTitle(this)"
-            onclick="switchChat({{ chat_id }})"
-          >
-            {{ chat.title }}
-          </li>
-          {% endfor %}
-        </ul>
+        <div class="scrollable-history">
+          <ul id="history-list">
+            {% for chat_id, chat in chats.items %}
+            <li
+              ondblclick="editHistoryTitle(this)"
+              onclick="switchChat({{ chat_id }})"
+            >
+              {{ chat.title }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
         <button class="new-chat-button" onclick="addNewChat()">
           新規チャット
         </button>
@@ -37,15 +39,15 @@
           <!-- 初期のチャットメッセージ -->
         </div>
         <div class="chat-input">
-          <form method="POST" id="chat-form">
+          <form method="POST" id="chat-form" onkeydown="return handleKeyDown(event)">
             {% csrf_token %}
             <div class="input-group">
-              <input
-                type="text"
+              <textarea
                 id="chat-input"
                 name="text"
                 placeholder="ここに入力"
-              />
+                rows="1"
+              ></textarea>
               <button class="clear-button" onclick="clearChatInput()">×</button>
               <button type="submit">送信</button>
             </div>

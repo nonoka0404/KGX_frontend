@@ -32,12 +32,18 @@ body {
   cursor: pointer;
   margin-left: 5px;
 }
-.history ul {
+.scrollable-history {
+  overflow-y: auto;
+  height: calc(
+    100% - 80px
+  ); /* Adjusted to create space above the new chat button */
+  margin-bottom: 20px; /* Added to create space above the new chat button */
+}
+.scrollable-history ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 60px; /* To accommodate the new chat button */
 }
-.history ul li {
+.scrollable-history ul li {
   background: white;
   padding: 10px;
   margin-bottom: 5px;
@@ -107,7 +113,7 @@ body {
   align-items: center;
 }
 
-.chat-input .input-group input {
+.chat-input .input-group textarea {
   flex-grow: 1;
   margin-right: 10px;
   padding: 10px;
@@ -115,6 +121,9 @@ body {
   border-radius: 10px;
   box-sizing: border-box;
   position: relative;
+  font-size: 16px; /* Adjusted to match the original input font size */
+  resize: none; /* Prevents the user from changing the size of the textarea */
+  height: 38px; /* Adjusted to match the original input height */
 }
 
 .chat-input button.clear-button {

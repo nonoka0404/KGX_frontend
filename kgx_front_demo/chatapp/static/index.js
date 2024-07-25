@@ -128,3 +128,13 @@ document
     event.preventDefault();
     sendMessage();
   });
+
+function handleKeyDown(event) {
+  if (event.key === "Enter") {
+    if (!event.shiftKey) {
+      event.preventDefault();
+      // Submit the form
+      document.getElementById("chat-form").submit();
+    }
+  }
+}
