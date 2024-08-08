@@ -16,6 +16,9 @@ body {
   position: relative;
   border-radius: 10px;
 }
+.hitory ul li:active{
+  background-color: light gray;
+}
 .history input {
   width: 70%;
   padding: 15px;
@@ -141,4 +144,7 @@ body {
   color: white;
   border-radius: 10px;
   cursor: pointer;
+}
+.clicked {
+  background-color: lightgray;
 }
