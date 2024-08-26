@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+    <title>Chatbot Interface</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="history">
+        <div style="display: flex">
+          <input type="text" id="search-input" placeholder="検索" />
+          <button onclick="clearSearchInput()"></button>
+        </div>
+        <div class="scrollable-history">
+          <ul id="history-list">
+          </ul>          
+        </div>
+        <button class="new-chat-button" onclick="addNewChat()">
+          新規チャット
+        </button>
+      </div>
+      <div class="chat">
+        <div class="chat-header">
+          <h1>KGX-HU.ai</h1>
+          <img src="{% static 'kgxlogo.jpg' %}" alt="Kitagas Logo" />
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input">
+          <form method="POST" id="chat-form">
+            {% csrf_token %}
+            <div class="input-group">
+              <textarea
+                id="chat-input"
+                name="text"
+                placeholder="ここに入力"
+                rows="1"
+                onkeydown="return handleKeyDown(event, this)"
+              ></textarea>
+              <button type="submit">送信</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'chat_inout.js' %}"></script>
+    <script src="{% static 'chat_history.js' %}"></script>
+  </body>
+</html>
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
+    <title>Chatbot Interface</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="history">
+        <div style="display: flex">
+          <input type="text" id="search-input" placeholder="検索" />
+          <button onclick="clearSearchInput()"></button>
+        </div>
+        <div class="scrollable-history">
+          <ul id="history-list">
+          </ul>          
+        </div>
+        <button class="new-chat-button" onclick="addNewChat()">
+          新規チャット
+        </button>
+      </div>
+      <div class="chat">
+        <div class="chat-header">
+          <h1>KGX-HU.ai</h1>
+          <img src="{% static 'kgxlogo.jpg' %}" alt="Kitagas Logo" />
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="chat-input">
+          <form method="POST" id="chat-form">
+            {% csrf_token %}
+            <div class="input-group">
+              <textarea
+                id="chat-input"
+                name="text"
+                placeholder="ここに入力"
+                rows="1"
+                onkeydown="return handleKeyDown(event, this)"
+              ></textarea>
+              <script src="{% static '/chat_inout.js' %}"></script>
+              <script src="{% static '/chat_history.js' %}"></script>
+              <button type="submit">送信</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </body>
+</html> -->
